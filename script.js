@@ -11,9 +11,18 @@ operators.forEach((op) => {
         if(arg1==='' && answer ==0){
             console.log("chose value first");
             operator = '';
+        }else if(arg1 !== '' && arg2 !== ''){
+            let num1 = parseFloat(arg1);
+            let num2 = parseFloat(arg2);
+            answer = add(num1,num2);
+            arg1 = answer;
+            arg2 = ''
+            operator = op.value;
+            console.log(`${answer} ${operator} ${arg2}`);
         }else{
             operator = op.value;
-            console.log(operator);
+            console.log(`${arg1} ${operator}`)
+            
         }
     });
 
@@ -60,4 +69,13 @@ function clearDisplay (){
 }
 clear.addEventListener('click',clearDisplay);
 
-//left off trying to make the operator act as =.
+function calculate (){
+    let num1 = parseFloat(arg1);
+    let num2 = parseFloat(arg2);
+    answer = add(num1,num2);
+    arg1 = answer;
+    arg2 = ''
+    operator = op.value;
+    console.log(`${answer} ${operator} ${arg2}`);
+
+}
