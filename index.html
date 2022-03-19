@@ -4,42 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/scientific-calculator-lcd" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
 <body>
-    <button class="buttons" value = "0">0</button>
-    <button class="buttons" value = "1">1</button>
-    <button class="buttons" value = "2">2</button>
-    <button class="buttons" value = "3">3</button>
-    <button class="buttons" value = "4">4</button>
-    <button class="buttons" value = "5">5</button>
-    <button class="buttons" value = "6">6</button>
-    <button class="buttons" value = "7">7</button>
-    <button class="buttons" value = "8">8</button>
-    <button class="buttons" value = "9">9</button>
-
-
-    <button class="operator" value = '+'>+</button>
-    <button class="operator" value = '-'>-</button>
-    <button class="operator" value = '/'>divide</button>
-    <button class="operator" value = '*'>X</button>
-    <button id="clear">clear</button>
-    <button id ="equals"> = </button>
-
-
-    <div id="display">
-        <p class="display-num">
-            0
-        </p>
-    </div>
-
-
+    <div class="main-flex">
+        <div class="display-board">
+            <p class="display-num">0</p>
+        </div>
+        <div class="button-container">
+            <button id="clear" class="btn">clear</button>
+            <button class="backspace btn">CE</button>
+            <button class="operator btn" value = '+'>+</button>
+            <button class="buttons btn" value = "9">9</button>
+            <button class="buttons btn" value = "8">8</button>
+            <button class="buttons btn" value = "7">7</button>
+            <button class="operator btn" value = '/'>divide</button>
+            <button class="buttons btn" value = "6">6</button>
+            <button class="buttons btn" value = "5">5</button>
+            <button class="buttons btn" value = "4">4</button>
+            <button class="operator btn" value = '*'>X</button>
+            <button class="buttons btn" value = "3">3</button>
+            <button class="buttons btn" value = "2">2</button>
+            <button class="buttons btn" value = "1">1</button>
+            <button class="operator btn" value = '-'>-</button>
+            <button class="buttons btn" value = "0">0</button>
+            <button class="buttons btn" value = ".">.</button>
+            <button id ="equals" class="btn"> = </button>
+        </div>
 
 
 
+    </div>    
 
-    
+
 
     <script src="script.js"></script>
 </body>

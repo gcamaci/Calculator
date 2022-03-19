@@ -1,0 +1,67 @@
+@import url('http://fonts.cdnfonts.com/css/scientific-calculator-lcd');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(220, 248, 244);
+}
+.main-flex{
+    
+    width: 375px;
+    min-width: 375px;
+    padding:20px;
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(190, 216, 233);
+    box-shadow: 0 0 10px 5px rgb(107, 105, 105);
+    border-radius: 15px;
+
+    
+}
+.display-board{
+    background-color: grey;
+    border: none;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 75px;
+    border-radius: 15px;
+
+    
+}
+.display-num{
+    font-family: 'Scientific Calculator LCD', sans-serif;
+}
+.button-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 10px;
+}
+.btn{
+    height: 75px;
+    margin: 2px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px 1px rgb(92, 91, 91);
+    border: none;
+    background-color: aliceblue;
+}
+#equals{
+    grid-column-start: 3;
+    grid-column-end: 5;
+    background-color: rgba(18, 253, 128, 0.5);
+}
+#clear{
+    grid-column-start:1;
+    grid-column-end: 3;
+    background-color: rgba(253, 18, 18, 0.5);
+}
