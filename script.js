@@ -2,7 +2,7 @@ let operator = '';
 let arg1 = '';
 let arg2 = '';
 let answer = 0;
-
+const display = document.querySelector('display.num')
 const clear = document.querySelector('#clear');
 const solution = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
@@ -12,21 +12,16 @@ operators.forEach((op) => {
             console.log("chose value first");
             operator = '';
         }else if(arg1 !== '' && arg2 !== ''){
-            let num1 = parseFloat(arg1);
-            let num2 = parseFloat(arg2);
-            answer = add(num1,num2);
-            arg1 = answer;
-            arg2 = ''
+            calculate(operator,arg1,arg2);
             operator = op.value;
-            console.log(`${answer} ${operator} ${arg2}`);
+            console.log(`${answer} ${operator}`)
+        
         }else{
             operator = op.value;
             console.log(`${arg1} ${operator}`)
-            
+
         }
     });
-
-
 });
 
 const buttons = document.querySelectorAll('.buttons');
@@ -47,19 +42,18 @@ buttons.forEach((button) => {
 function add (a,b){
     return answer = a + b;
 };
+function sub (a,b){
+    return a - b;
+}
 function multi (a,b){
     return answer = a * b;
 };
 function divi(a,b){
-    return answer = a /b;
+    return answer = a / b;
 };
 solution.addEventListener('click', () =>{
-    let num1 = parseFloat(arg1);
-    let num2 = parseFloat(arg2);
-    answer = add(num1,num2);
-    arg1 = answer;
-    arg2 = ''
-    console.log(answer)
+    calculate(operator,arg1,arg2);
+    console.log(`${answer}`)
 })
 function clearDisplay (){
     operator = '';
@@ -69,13 +63,15 @@ function clearDisplay (){
 }
 clear.addEventListener('click',clearDisplay);
 
-function calculate (){
-    let num1 = parseFloat(arg1);
-    let num2 = parseFloat(arg2);
-    answer = add(num1,num2);
+function calculate (oper, argu1, argu2){
+    let num1 = parseFloat(argu1);
+    let num2 = parseFloat(argu2);
+    if(oper === "+"){
+        answer = add(num1,num2);
+    }else if(oper==='-'){
+        answer = sub(num1,num2);
+    }
     arg1 = answer;
     arg2 = ''
-    operator = op.value;
-    console.log(`${answer} ${operator} ${arg2}`);
-
+    operator = '';
 }
