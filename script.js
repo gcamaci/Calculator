@@ -6,11 +6,7 @@ const displayb = document.querySelector('.display-num')
 const clear = document.querySelector('#clear');
 const solution = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
-
-
 //for each op button check the globals and change the operator as needed
-
-
 operators.forEach((op) => {
     op.addEventListener('click',() => {
         if(arg1==='' && answer ==0){
@@ -33,14 +29,16 @@ const buttons = document.querySelectorAll('.buttons');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
         if(operator ===''){
-            console.log(button.value);
-            arg1 += button.value;
-            displayb.textContent = `${arg1}`
-             
+            if(arg1.length <= 11){
+                console.log(button.value);
+                arg1 += button.value;
+                displayb.textContent = `${arg1}`
+            }
         }else{
-            arg2 += button.value;
-            displayb.textContent = `${arg1} ${operator} ${arg2} `
-            
+            if(arg2.length <= 11){
+                arg2 += button.value;
+                displayb.textContent = `${arg1} ${operator} ${arg2} `
+            }
         }
     });
 });
@@ -79,15 +77,27 @@ function calculate (oper, argu1, argu2){
     let num1 = parseFloat(argu1);
     let num2 = parseFloat(argu2);
     if(oper === "+"){
-        answer = add(num1,num2).toFixed(2);
+        answer = add(num1,num2);
+        tooLong(answer)
     }else if(oper==='-'){
-        answer = sub(num1,num2).toFixed(2);
+        answer = sub(num1,num2);
+        tooLong(answer)
     }else if(oper === '/'){
-        answer = divi(num1,num2).toFixed(2);
+        answer = divi(num1,num2);
+        tooLong(answer)
     }else{
-        answer = multi(num1,num2).toFixed(2);
+        answer = multi(num1,num2);
+        tooLong(answer)
     }
+    tooLong(answer)
+    console.log(answer)
     arg1 = answer;
     arg2 = ''
     operator = '';
+}
+function tooLong(x){
+    if(x.length <= 11){
+        console.log('here I am')
+    }
+    
 }
