@@ -14,6 +14,7 @@ operators.forEach((op) => {
             operator = '';
         }else if(arg1 !== '' && arg2 !== ''){
             calculate(operator,arg1,arg2);
+            //tooLong(answer)
             operator = op.value;
             displayb.textContent = `${answer} ${operator}`
         
@@ -61,6 +62,7 @@ function divi(a,b){
 };
 solution.addEventListener('click', () =>{
     calculate(operator,arg1,arg2);
+    //tooLong(answer);
     displayb.textContent = `${answer}`
     console.log(`${answer}`)
 })
@@ -78,26 +80,29 @@ function calculate (oper, argu1, argu2){
     let num2 = parseFloat(argu2);
     if(oper === "+"){
         answer = add(num1,num2);
-        tooLong(answer)
     }else if(oper==='-'){
         answer = sub(num1,num2);
-        tooLong(answer)
     }else if(oper === '/'){
         answer = divi(num1,num2);
-        tooLong(answer)
     }else{
         answer = multi(num1,num2);
-        tooLong(answer)
     }
-    tooLong(answer)
-    console.log(answer)
+    //tooLong(answer);
+    //console.log(answer)
     arg1 = answer;
     arg2 = ''
     operator = '';
 }
 function tooLong(x){
-    if(x.length <= 11){
+    let numSize = x.toString();
+    if(numSize.length <= 14){
         console.log('here I am')
+        displayb.textContent = `${answer}`
+    }else{
+        displayb.textContent = `${answer}`
+        displayb.fontSize= '5px';
     }
-    
+    //arg1 = numSize;
+    //arg2 = '';
+    //operator = '';
 }

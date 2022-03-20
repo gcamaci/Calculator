@@ -42,8 +42,11 @@ body{
 .display-num{
     font-family: 'Scientific Calculator LCD', sans-serif;
     color:rgb(16, 245, 16);
-    font-size: 25px;
+    font-size: 1rem;
     white-space: pre-line;
+    margin-right: 10px;
+    
+    
 }
 .button-container{
     width: 100%;
