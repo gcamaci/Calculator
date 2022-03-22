@@ -13,7 +13,7 @@ const operators = document.querySelectorAll('.operator');
 //for each op button check the globals and change the operator as needed
 operators.forEach((op) => {
     op.addEventListener('click',() => {
-        if(arg1==='' && answer ==0){
+        if(arg1===''){
             operator = '';
         }else if(arg1 !== '' && arg2 !== ''){
             calculate(operator,arg1,arg2);
@@ -79,3 +79,22 @@ function calculate(oper,argu1,argu2){
             answer = num1 / num2;
     }
 };
+const backSpace = document.querySelector('.backspace');
+backSpace.addEventListener('click', () =>{
+    arg1 = arg1.toString();
+    if(arg1 !== '' && operator === '' && arg2 === ''){
+        arg1 = arg1.slice(0,-1);
+        displayb.textContent = arg1;
+
+    }else if(arg1 !== '' && operator !== '' && arg2 === ''){
+        operator = ''
+        displayb.textContent = `${arg1} ${operator}`;
+
+    }else if(arg1 !== '' && operator !== '' && arg2 !== ''){
+        arg2 = arg2.slice(0,-1);
+        displayb.textContent = `${arg1} ${operator} ${arg2}`;
+    }
+    console.log(arg1);
+    console.log(arg2);
+    console.log(operator);
+});
