@@ -38,10 +38,10 @@ buttons.forEach((button) => {
                 arg1 += button.value;
                 displayb.textContent = `${arg1}`
             }
-        }else{
+        }else if(operator !== ''){
             if(arg2.length <= 11){
                 arg2 += button.value;
-                displayb.textContent = `${arg1} ${operator} ${arg2} `
+                displayb.textContent = `${arg1} ${operator} ${arg2} `;
             }
         }
     });
