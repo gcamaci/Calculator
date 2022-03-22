@@ -25,6 +25,24 @@ operators.forEach((op) => {
         }
     });
 });
+
+
+function populateArgument(opValue){
+    if(arg1==='' && answer ==0){
+        console.log("chose value first");
+        operator = '';
+    }else if(arg1 !== '' && arg2 !== ''){
+        calculate(operator,arg1,arg2);
+        //tooLong(answer)
+        operator = op.value;
+        displayb.textContent = `${answer} ${operator}`
+    
+    }else{
+        operator = op.value;
+        displayb.textContent = `${arg1} ${operator}`
+        
+    }
+};
 //number buttons, creating argument 1 and 2. 
 const buttons = document.querySelectorAll('.buttons');
 buttons.forEach((button) => {
@@ -102,7 +120,7 @@ function tooLong(x){
         displayb.textContent = `${answer}`
         displayb.fontSize= '5px';
     }
-    //arg1 = numSize;
+    //arg1 = numSize;       
     //arg2 = '';
     //operator = '';
 }
