@@ -99,6 +99,6 @@ backSpace.addEventListener('click', () =>{
 });
 
 window.addEventListener('keydown',(e) => {
-    console.log(e)
-    console.log(e.key)
+    if (e.keyCode >= 48 && e.keyCode <= 57){
+    }
 });
