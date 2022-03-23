@@ -20,7 +20,7 @@ function calculate(){
         case '-':
             answer = num1 - num2;
         break;
-        case '*':
+        case 'x':
             answer = num1 * num2;
         break;
         case '/':
@@ -109,7 +109,7 @@ function deleteNum(){
 document.addEventListener('keydown',(e) => {
     if (e.keyCode >= 48 && e.keyCode <= 57){
         chooseArgs(e.key);
-    }else if(e.key === '+'||e.key === "-" || e.key ==='/' ||e.key ==='*'){
+    }else if(e.key === '+'||e.key === "-" || e.key ==='/' ||e.key ==='x'){
         chooseOp(e.key);
     }else if (e.key === "Enter"){
         calculate();
