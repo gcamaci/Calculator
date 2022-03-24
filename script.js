@@ -3,13 +3,18 @@ let arg1 = '';
 let arg2 = '';
 
 
-
+const buttons = document.querySelectorAll('.buttons');
 const displayb = document.querySelector('.display-num')
 const clear = document.querySelector('#clear');
 const solution = document.querySelector('#equals');
 const operators = document.querySelectorAll('.operator');
+const backSpace = document.querySelector('.backspace');
 
-function calculate(){
+/*anonymous function that calulates answer based off operator chosen by
+user, arguments must be turned into integeres from string and then converted back
+to string.  
+*/
+const calculate = () => {
     let num1 = parseFloat(arg1);
     let num2 = parseFloat(arg2);
     let answer = 0;
@@ -27,11 +32,14 @@ function calculate(){
             answer = num1 / num2;
         break;
     }
-    arg2 = ''
+    arg2 = '';
     arg1 = answer.toString();
-    
+    operator = '';
 
 };
+/*
+    Choose operator used in keyboard and buttons
+*/
 const chooseOp = (oper) => {
     if(arg1===''){
         operator = '';
@@ -45,14 +53,11 @@ const chooseOp = (oper) => {
     }
 
 };
-//for each op button check the globals and change the operator as needed
-operators.forEach((op) => {
-    op.addEventListener('click',() => {
-        chooseOp(op.value);
-    });
-});
-
-function chooseArgs(arg){
+/*
+    takes input from key/btn and adds to current argument string
+    cannot enter more than 11 digits.
+*/
+const chooseArgs = arg => {
     if(operator ===''){
         if(arg1.length <= 11){
             arg1 += arg;
@@ -65,30 +70,11 @@ function chooseArgs(arg){
         }
     }
 };
-//number buttons, creating argument 1 and 2. 
-const buttons = document.querySelectorAll('.buttons');
-buttons.forEach((button) => {
-    button.addEventListener('click',() => {
-        chooseArgs(button.value)
-    });
-});
-solution.addEventListener('click', () =>{
-    calculate();
-    displayb.textContent = `${arg1}`
-    
-})
-
-clear.addEventListener('click', () => {
-    displayb.textContent ="0"
-    operator = '';
-    arg1 = '';
-    arg2 = '';
-});
-
-const backSpace = document.querySelector('.backspace');
-backSpace.addEventListener('click', deleteNum);
-    
-function deleteNum(){
+/*
+    bring in arg as string and compare to globals. Slice last digit in
+    the string and display to display board.
+*/
+const deleteNum = () => {
     arg1 = arg1.toString();
     if(arg1 !== '' && operator === '' && arg2 === ''){
         arg1 = arg1.slice(0,-1);
@@ -106,8 +92,14 @@ function deleteNum(){
     console.log(arg2);
     console.log(operator);
 };
+
+
+/*
+    Keyboard function
+*/
 document.addEventListener('keydown',(e) => {
-    if (e.keyCode >= 48 && e.keyCode <= 57){
+    let keke = e.code.slice(-1,e.code.length);
+    if (parseInt(keke) >= 0 && parseInt(keke) <= 10 || e.key === '.'){
         chooseArgs(e.key);
     }else if(e.key === '+'||e.key === "-" || e.key ==='/' ||e.key ==='x'){
         chooseOp(e.key);
@@ -118,17 +110,34 @@ document.addEventListener('keydown',(e) => {
     }else if(e.key === 'Backspace'){
         deleteNum();
     }
-    
-    console.log(e.keyCode)
+
     console.log(`i am arg1 ${arg1}`);
     console.log(`i am arg2 ${arg2}`);
     console.log(`i am ${operator}`);
+    console.log(e);
     
-    /*else if(e.key === "Backspace"){
-        deleteNum();
-    }else if(e.key === "="){
-        calculate();
-        displayb.textContent = `${arg1}`
-    }else*/
-    console.log(e.key);
+});
+buttons.forEach((button) => {
+    button.addEventListener('click',() => {
+        chooseArgs(button.value)
+    });
+});
+operators.forEach((op) => {
+    op.addEventListener('click',() => {
+        chooseOp(op.value);
+    });
+});
+solution.addEventListener('click', () =>{
+    calculate();
+    displayb.textContent = `${arg1}`
+    
+})
+
+backSpace.addEventListener('click', deleteNum);
+
+clear.addEventListener('click', () => {
+    displayb.textContent ="0"
+    operator = '';
+    arg1 = '';
+    arg2 = '';
 });
